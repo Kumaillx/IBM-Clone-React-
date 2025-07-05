@@ -84,21 +84,21 @@ body {
   position: absolute;
   top: 100%;
   left: 0;
-  min-width: 900px;         /* Wider dropdown */
-  min-height: 260px;        /* Taller dropdown */
+  min-width: 1200px; /* wider for 4 columns */
+  min-height: 260px;
   background-color: #fff;
-  border: none;             /* Remove border */
+  border: none;
   border-radius: 0;
   box-shadow: 0 4px 16px rgba(0, 0, 0, 0.10);
-  padding: 48px 64px 48px 64px; /* More padding */
+  padding: 48px 64px;
   margin-top: 8px;
   z-index: 1000;
   animation: dropdown-fade-in 0.18s ease;
   display: grid;
-  grid-template-columns: repeat(3, 1fr); /* 3 columns, adjust to 4 if needed */
+  grid-template-columns: repeat(4, 1fr); /* 4 columns */
   grid-template-rows: repeat(2, 1fr);    /* 2 rows */
-  gap: 40px 80px;                        /* More space between items */
-  align-items: start;
+  gap: 48px 96px;                        /* more space between items */
+  align-items: center;
 }
 
 @keyframes dropdown-fade-in {
@@ -109,7 +109,7 @@ body {
 .dropdown-content a {
   display: flex;
   align-items: center;
-  font-size: 1.5rem;        /* Larger font */
+  font-size: 2rem;
   font-weight: 400;
   color: #161616;
   text-decoration: none;
@@ -117,19 +117,32 @@ body {
   border: none;
   padding: 0;
   margin: 0;
-  transition: color 0.15s, text-decoration 0.15s;
+  transition: color 0.15s;
   min-width: 0;
   min-height: 0;
   box-shadow: none;
+  gap: 8px;
+}
+
+.dropdown-content a::after {
+  content: "→";
+  font-size: 1.7rem;
+  margin-left: 8px;
+  transition: color 0.15s;
+  color: #161616;
 }
 
 .dropdown-content a:hover,
 .dropdown-content a:focus {
   color: #0f62fe;
-  text-decoration: underline;
+  text-decoration: none;
   background: none;
   outline: none;
-  border-radius: 0;
+}
+
+.dropdown-content a:hover::after,
+.dropdown-content a:focus::after {
+  color: #0f62fe;
 }
 
 /* Remove arrow if you have any pseudo-elements or SVGs in the links */
@@ -174,13 +187,6 @@ body {
   display: flex;
   align-items: center;
 
-}
-
-.navbar-menu a:focus,
-.dropdown a:focus {
-  outline: 2px solid #0056b3;
-  outline-offset: 2px;
-  
 }
 
 
