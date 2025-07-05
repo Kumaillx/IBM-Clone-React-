@@ -1,4 +1,4 @@
-import React, { useState, useRef, useEffect } from 'react';
+import { useState, useRef, useEffect } from 'react';
 import '../index.css';
 import ibmLogo from '../assets/IBM.png';
 import searchIcon from '../assets/Search-Icon.png';
@@ -173,8 +173,8 @@ const Navbar = () => {
             <div
                 style={{
                     position: 'absolute',
-                    left: '180px', // adjust to match your menu start
-                    right: '180px', // adjust to match your icons start
+                    left: '180px', 
+                    right: '180px', 
                     top: 0,
                     height: '100%',
                     background: '#f4f4f4',
@@ -201,7 +201,7 @@ const Navbar = () => {
                     }}
                 />
                 <span style={{ marginRight: 24, color: '#393939', fontSize: 24 }}>
-                    {/* SVG for search icon */}
+                    {/* Sreach Icon */}
                     <svg width="24" height="24" fill="none" stroke="#393939" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
                         <circle cx="11" cy="11" r="8"/>
                         <line x1="21" y1="21" x2="16.65" y2="16.65"/>
