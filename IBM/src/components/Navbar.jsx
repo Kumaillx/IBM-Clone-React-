@@ -31,7 +31,7 @@ return (
                 <a href="#" onClick={() => toggleDropdown('AI')}>
                     AI
                     <span>
-                        {/* Chevron Down SVG */}
+                        
                         <svg width="20" height="20" viewBox="0 0 20 20" fill="none">
                             <path d="M5 8l5 5 5-5" stroke="#393939" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"/>
                         </svg>
@@ -39,8 +39,13 @@ return (
                 </a>
 
                 <div className="dropdown-content">
-                    <a href="#">AI Subitem 1</a>
-                    <a href="#">AI Subitem 2</a>
+                    <a href="#">Overview</a>
+                    <a href="#">Consulting</a>
+                    <a href="#">Research</a>
+                    <a href="#">watsonx</a>
+                    <a href="#">Agents</a>
+                    <a href="#">Ethics and governance</a>    
+                    <a href="#">Granite models</a>
                 </div>
             </div>
             {/* Hybrid Cloud */}
@@ -55,8 +60,12 @@ return (
                     </span>
                 </a>
                 <div className="dropdown-content">
-                    <a href="#">Hybrid Subitem 1</a>
-                    <a href="#">Hybrid Subitem 2</a>
+                    <a href="#">Overview</a>
+                    <a href="#">Consulting</a>
+                    <a href="#">IT infrastructure</a>
+                    <a href="#">Cloud platform</a>
+                    <a href="#">Quantum computing</a>
+                    <a href="#">Research</a>    
                 </div>
             </div>
             <div className={`dropdown ${openDropdown === 'Products' ? 'open' : ''}`}>
@@ -70,8 +79,17 @@ return (
                     </span>
                 </a>
                 <div className="dropdown-content">
-                    <a href="#">Products Subitem 1</a>
-                    <a href="#">Products Subitem 2</a>
+                    <a href="#">Featured</a>
+                    <a href="#">Feature AI & Machine Learning</a>
+                    <a href="#">Analytics</a>
+                    <a href="#">Asset lifecycle management</a>
+                    <a href="#">Business automation</a>
+                    <a href="#">Containers</a>
+                    <a href="#">Databases</a>
+                    <a href="#">DevOps & Engineering IT automation</a>
+                    <a href="#">Middleware</a>
+                    <a href="#">Network Operating systems</a>
+                    <a href="#">Quantum Security & identity Servers Storage</a>
                 </div>
             </div>
             <a href="#">Consulting</a>
@@ -86,8 +104,13 @@ return (
                     </span>
                 </a>
                 <div className="dropdown-content">
-                    <a href="#">Support Subitem 1</a>
-                    <a href="#">Support Subitem 2</a>
+                    <a href="#">Whats New</a>
+                    <a href="#">Community</a>
+                    <a href="#">Documentation</a>
+                    <a href="#">Developer</a>
+                    <a href="#">Support</a>
+                    <a href="#">Implementation</a>
+                    <a href="#">Training</a>
                 </div>
             </div>
             <a href="#">Think</a>
