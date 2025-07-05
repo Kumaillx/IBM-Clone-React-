@@ -1,6 +1,10 @@
 import React, { useState } from 'react';
 import '../index.css';
 import ibmLogo from '../assets/IBM.png';
+import searchIcon from '../assets/Search-Icon.png';
+import MsgIcon from '../assets/Msg-Icon.png';
+import WebIcon from '../assets/Web-Icon.png';
+import UserIcon from '../assets/User-Icon.png';
 
 const Navbar = () => {
   const [openDropdown, setOpenDropdown] = useState(null);
@@ -63,10 +67,36 @@ return (
             <a href="#">Think</a>
         </div>
         <div className="navbar-icons">
-            <span className="icon">{/* Replace with SVG icon */} <svg width="20" height="20" fill="none" stroke="#393939" strokeWidth="2"><circle cx="9" cy="9" r="7"/><line x1="15" y1="15" x2="19" y2="19"/></svg> </span>
-            <span className="icon">💬</span>
-            <span className="icon">🌐</span>
-            <span className="icon">👤</span>
+            <span className="icon">
+                <img
+                src={searchIcon}
+                alt="Search"
+                className="search-icon"
+                style={{ width: '20px', height: '20px' }}
+                onClick={() => toggleDropdown('Search')}
+                />
+            </span>
+            <span className="icon">
+                <img
+                    src={MsgIcon}
+                    alt="Message"
+                    style={{ width: '20px', height: '20px' }}
+                />
+            </span>
+            <span className="icon">
+                <img
+                    src={WebIcon}
+                    alt="Web"
+                    style={{ width: '20px', height: '20px' }}
+                />
+            </span>
+            <span className="icon">
+                <img
+                    src={UserIcon}
+                    alt="User"
+                    style={{ width: '20px', height: '20px' }}
+                />
+            </span>
         </div>
     </nav>
 );
