@@ -1,5 +1,5 @@
 body {
-  font-family: sans-serif;
+  font-family: 'IBM Plex Sans', Arial, sans-serif;
   margin: 0;
   padding: 0;
 }
@@ -12,99 +12,62 @@ body {
 .navbar {
   display: flex;
   align-items: center;
-  justify-content: space-between;
   background-color: #fff;
   border-bottom: 1px solid #d3eafb;
-  padding: 0 32px;
-  height: 64px; /* Slightly taller for better vertical alignment */
-  font-family: 'IBM Plex Sans', Arial, sans-serif;
-  box-shadow: 0 2px 8px rgba(0,0,0,0.08);
-  position: relative;
+  padding: 0 20px;
+  height: 56px;
+  box-shadow: 0 1px 0 #d3eafb;
 }
 
 .navbar-brand {
   display: flex;
   align-items: center;
-  min-width: 180px; /* Ensures logo and divider are grouped and spaced */
 }
 
 .brand-logo {
   height: 32px;
-  margin-right: 24px;
+  width: auto;
 }
 
 .navbar-divider {
   width: 1px;
   height: 32px;
   background: #e0e0e0;
-  margin: 0 24px 0 0;
+  margin: 0 16px;
 }
 
 .navbar-menu {
   display: flex;
-  gap: 48px;
+  gap: 16px;
   align-items: center;
-  flex: 1;
-  justify-content: flex-start;
-  margin-left: 0;
+  margin-left: 0; /* Ensure it starts right after the divider */
 }
 
-.navbar-menu a,
-.navbar-menu .dropdown > a {
+.navbar-menu a {
   text-decoration: none;
   color: #393939;
-  font-size: 22px;
-  font-family: 'IBM Plex Sans', Arial, sans-serif;
+  font-size: 16px;
   font-weight: 400;
-  letter-spacing: 0.01em;
-  padding: 0 8px;
-  background: none;
-  border: none;
-  outline: none;
-  display: flex;
-  align-items: center;
-  height: 64px;
-  transition: color 0.2s, background 0.2s;
-}
-
-.navbar-menu a:hover,
-.navbar-menu .dropdown > a:hover {
-  color: #0f62fe;
-  background: #f4f4f4;      /* IBM light gray shade */
-  border-radius: 0;         /* IBM style: no rounding */
-  box-shadow: none;         /* Remove shadow */
-  z-index: 2;
+  padding: 4px 8px;
+  white-space: nowrap;
   position: relative;
-  transition: background 0.2s, color 0.2s;
-}
-
-.dropdown {
-  position: relative;
-}
-
-.dropdown > a span {
-  font-size: 20px;
-  margin-left: 6px;
-  margin-bottom: 2px;
-  color: #393939;
-  transition: transform 0.2s;
-  display: inline-block;
-}
-
-.dropdown.open > a span {
-  transform: rotate(180deg);
-}
-
-/* Remove underline and background on focus */
-.navbar-menu a:focus {
-  outline: none;
-  background: none;
 }
 
 .dropdown a {
   display: flex;
   align-items: center;
-  gap: 4px;
+  gap: 2px;
+}
+
+.dropdown-caret {
+  font-size: 10px;
+  display: flex;
+  align-items: center;
+}
+
+.dropdown-caret svg {
+  width: 12px;
+  height: 12px;
 }
 
 .dropdown.open .dropdown-content {
@@ -116,36 +79,101 @@ body {
   position: absolute;
   background-color: #ffffff;
   border: 1px solid #d3eafb;
-  padding: 10px;
+  padding: 8px 0;
   min-width: 180px;
   border-radius: 4px;
-  box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+  z-index: 1000;
 }
 
 .dropdown-content a {
-  display: block;
-  padding: 5px 0;
+  padding: 8px 16px;
+  color: #393939;
   text-decoration: none;
-  color: #000000;
+}
+
+.dropdown-content a:hover {
+  background-color: #f5f5f5;
 }
 
 .navbar-icons {
   display: flex;
-  gap: 32px;
-  align-items: center;
-  min-width: 180px; /* Ensures icons are grouped and spaced */
-  justify-content: flex-end;
+  gap: 16px;
+  margin-left: auto; /* Push icons to the right */
 }
 
 .navbar-icons .icon {
-  font-size: 22px;
-  color: #393939;
+  font-size: 18px;
+  color: #666666;
   cursor: pointer;
   display: flex;
   align-items: center;
 }
 
+.navbar-icons .icon img {
+  width: 18px;
+  height: 18px;
+}
+
+.navbar-icons .icon:hover {
+  opacity: 0.8;
+}
+
+.navbar-menu a:hover,
+.dropdown a:hover {
+  background-color: #eeeeee; /* Blackish background on hover */
+
+}
+
+.navbar-menu a:focus,
+.dropdown a:focus {
+  outline: 2px solid #0056b3;
+  outline-offset: 2px;
+  
+}
+
+
+.search-bar {
+  flex: 1;
+  font-size: 1.3rem;
+  border: none;
+  outline: none;
+  background: transparent;
+  height: 56px;
+  color: #393939;
+  font-family: 'IBM Plex Sans', Arial, sans-serif;
+}
+
+.search-bar-container {
+  position: absolute;
+  left: 100px;
+  right: 100px;
+  top: 0;
+  height: 100%;
+  background: #f4f4f4;
+  display: flex;
+  align-items: center;
+  z-index: 20;
+  padding: 0 24px;
+}
+
+.search-bar-container::after {
+  content: '';
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  width: 100%;
+  height: 3px;
+  background: #0f62fe;
+}
+
 .main-content {
   padding: 20px;
   text-align: center;
+}
+
+/* Disable menu interaction when search is open */
+.navbar-menu[style*="opacity: 0.3"],
+.navbar-icons[style*="opacity: 0.3"] {
+  pointer-events: none;
 }
