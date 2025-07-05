@@ -13,10 +13,10 @@ body {
   display: flex;
   align-items: center;
   background-color: #fff;
-  border-bottom: 1px solid #d3eafb;
+  border-bottom: 1px solid #ffffff;
   padding: 0 20px;
   height: 56px;
-  box-shadow: 0 1px 0 #d3eafb;
+  box-shadow: 0 0.4px 0 #a8a8a8;
 }
 
 .navbar-brand {
@@ -40,7 +40,7 @@ body {
   display: flex;
   gap: 16px;
   align-items: center;
-  margin-left: 0; /* Ensure it starts right after the divider */
+  margin-left: 0; 
 }
 
 .navbar-menu a {
@@ -99,15 +99,18 @@ body {
 .navbar-icons {
   display: flex;
   gap: 16px;
-  margin-left: auto; /* Push icons to the right */
+  margin-left: auto; 
 }
 
 .navbar-icons .icon {
-  font-size: 18px;
-  color: #666666;
-  cursor: pointer;
+  width: 48px;
+  height: 48px;
   display: flex;
   align-items: center;
+  justify-content: center;
+  border-radius: 4px; 
+  transition: background 0.15s;
+  cursor: pointer;
 }
 
 .navbar-icons .icon img {
@@ -115,13 +118,20 @@ body {
   height: 18px;
 }
 
+
 .navbar-icons .icon:hover {
-  opacity: 0.8;
+  background-color: #eeeeee; /* Blackish background on hover */
+  height: 52px; /* Match navbar height */
+  display: flex;
+  /* align-items: center; */
 }
 
 .navbar-menu a:hover,
 .dropdown a:hover {
   background-color: #eeeeee; /* Blackish background on hover */
+  height: 52px; /* Match navbar height */
+  display: flex;
+  align-items: center;
 
 }
 
