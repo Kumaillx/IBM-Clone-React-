@@ -2,6 +2,7 @@ import React from 'react';
 import Navbar from './components/Navbar';
 import Footbar from './components/Footbar';
 import './index.css';
+import ibmImage from './assets/IBM.png'; // Replace with actual image path
 
 function App() {
   return (
@@ -17,7 +18,7 @@ function App() {
             <button>Explore what's new →</button>
             <button>Learn about AI agents →</button>
           </div>
-          <div className="image-placeholder"></div>
+          <img src={ibmImage} alt="IBM AI Workflow Illustration" className="main-image" />
         </div>
         <div className="sidebar">
           <h3>Latest news</h3>
@@ -29,7 +30,7 @@ function App() {
           </p>
         </div>
       </div>
-      <div className="content-spacer"></div> {/* Spacer to push footer to bottom */}
+      <div className="content-spacer"></div>
       <Footbar />
     </div>
   );
