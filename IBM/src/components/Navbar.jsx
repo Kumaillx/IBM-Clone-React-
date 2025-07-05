@@ -13,8 +13,9 @@ const Navbar = () => {
     setOpenDropdown(openDropdown === dropdown ? null : dropdown);
   };
 
+const [showSearchBar, setShowSearchBar] = useState(false);
 return (
-    <nav className="navbar">
+    <nav className="navbar" style={{ position: 'relative' }}>
         <div className="navbar-brand">
             <img
                 src={ibmLogo}
@@ -24,21 +25,34 @@ return (
             />
             <div className="navbar-divider"></div>
         </div>
-        <div className="navbar-menu">
+        <div className="navbar-menu" style={{ opacity: showSearchBar ? 0.3 : 1, pointerEvents: showSearchBar ? 'none' : 'auto' }}>
+            {/* For The AI */}
             <div className={`dropdown ${openDropdown === 'AI' ? 'open' : ''}`}>
                 <a href="#" onClick={() => toggleDropdown('AI')}>
-                    AI <span style={{fontSize: '18px'}}>▼</span>
+                    AI
+                    <span>
+                        {/* Chevron Down SVG */}
+                        <svg width="20" height="20" viewBox="0 0 20 20" fill="none">
+                            <path d="M5 8l5 5 5-5" stroke="#393939" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"/>
+                        </svg>
+                    </span>
                 </a>
+
                 <div className="dropdown-content">
                     <a href="#">AI Subitem 1</a>
                     <a href="#">AI Subitem 2</a>
                 </div>
             </div>
-            <div
-                className={`dropdown ${openDropdown === 'Hybrid Cloud' ? 'open' : ''}`}
-            >
+            {/* Hybrid Cloud */}
+            <div className={`dropdown ${openDropdown === 'Hybrid Cloud' ? 'open' : ''}`}>
                 <a href="#" onClick={() => toggleDropdown('Hybrid Cloud')}>
-                    Hybrid Cloud ▼
+                    Hybrid Cloud
+                    <span>
+                        {/* Chevron Down SVG */}
+                        <svg width="20" height="20" viewBox="0 0 20 20" fill="none">
+                            <path d="M5 8l5 5 5-5" stroke="#393939" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"/>
+                        </svg>
+                    </span>
                 </a>
                 <div className="dropdown-content">
                     <a href="#">Hybrid Subitem 1</a>
@@ -47,7 +61,13 @@ return (
             </div>
             <div className={`dropdown ${openDropdown === 'Products' ? 'open' : ''}`}>
                 <a href="#" onClick={() => toggleDropdown('Products')}>
-                    Products ▼
+                    Products
+                    <span>
+                        {/* Chevron Down SVG */}
+                        <svg width="20" height="20" viewBox="0 0 20 20" fill="none">
+                            <path d="M5 8l5 5 5-5" stroke="#393939" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"/>
+                        </svg>
+                    </span>
                 </a>
                 <div className="dropdown-content">
                     <a href="#">Products Subitem 1</a>
@@ -57,7 +77,13 @@ return (
             <a href="#">Consulting</a>
             <div className={`dropdown ${openDropdown === 'Support' ? 'open' : ''}`}>
                 <a href="#" onClick={() => toggleDropdown('Support')}>
-                    Support ▼
+                    Support
+                    <span>
+                        {/* Chevron Down SVG */}
+                        <svg width="20" height="20" viewBox="0 0 20 20" fill="none">
+                            <path d="M5 8l5 5 5-5" stroke="#393939" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"/>
+                        </svg>
+                    </span>
                 </a>
                 <div className="dropdown-content">
                     <a href="#">Support Subitem 1</a>
@@ -66,14 +92,14 @@ return (
             </div>
             <a href="#">Think</a>
         </div>
-        <div className="navbar-icons">
+        <div className="navbar-icons" style={{ opacity: showSearchBar ? 0.3 : 1, pointerEvents: showSearchBar ? 'none' : 'auto' }}>
             <span className="icon">
                 <img
-                src={searchIcon}
-                alt="Search"
-                className="search-icon"
-                style={{ width: '20px', height: '20px' }}
-                onClick={() => toggleDropdown('Search')}
+                    src={searchIcon}
+                    alt="Search"
+                    className="search-icon"
+                    style={{ width: '20px', height: '20px', cursor: 'pointer' }}
+                    onClick={() => setShowSearchBar(true)}
                 />
             </span>
             <span className="icon">
@@ -98,6 +124,67 @@ return (
                 />
             </span>
         </div>
+        {showSearchBar && (
+            <div
+                style={{
+                    position: 'absolute',
+                    left: '180px', // adjust to match your menu start
+                    right: '180px', // adjust to match your icons start
+                    top: 0,
+                    height: '100%',
+                    background: '#f4f4f4',
+                    display: 'flex',
+                    alignItems: 'center',
+                    zIndex: 20,
+                    padding: '0 24px',
+                }}
+            >
+                <input
+                    type="text"
+                    className="search-bar"
+                    placeholder="Search all of IBM"
+                    autoFocus
+                    style={{
+                        flex: 1,
+                        fontSize: '1.3rem',
+                        border: 'none',
+                        outline: 'none',
+                        background: 'transparent',
+                        height: '56px',
+                        color: '#393939',
+                        fontFamily: "'IBM Plex Sans', Arial, sans-serif",
+                    }}
+                />
+                <span style={{ marginRight: 24, color: '#393939', fontSize: 24 }}>
+                    {/* SVG for search icon */}
+                    <svg width="24" height="24" fill="none" stroke="#393939" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                        <circle cx="11" cy="11" r="8"/>
+                        <line x1="21" y1="21" x2="16.65" y2="16.65"/>
+                    </svg>
+                </span>
+                <button
+                    onClick={() => setShowSearchBar(false)}
+                    style={{
+                        background: 'none',
+                        border: 'none',
+                        fontSize: '1.5rem',
+                        cursor: 'pointer',
+                        color: '#393939',
+                    }}
+                    aria-label="Close search"
+                >
+                    &#10005;
+                </button>
+                <div style={{
+                    position: 'absolute',
+                    left: 0,
+                    bottom: 0,
+                    width: '100%',
+                    height: '3px',
+                    background: '#0f62fe'
+                }} />
+            </div>
+        )}
     </nav>
 );
 };

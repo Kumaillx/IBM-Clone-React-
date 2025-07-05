@@ -11,39 +11,94 @@ body {
 
 .navbar {
   display: flex;
-  justify-content: space-between;
   align-items: center;
+  justify-content: space-between;
   background-color: #fff;
   border-bottom: 1px solid #d3eafb;
   padding: 0 32px;
-  height: 56px;
+  height: 64px; /* Slightly taller for better vertical alignment */
   font-family: 'IBM Plex Sans', Arial, sans-serif;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+  position: relative;
 }
 
 .navbar-brand {
   display: flex;
   align-items: center;
+  min-width: 180px; /* Ensures logo and divider are grouped and spaced */
+}
+
+.brand-logo {
+  height: 32px;
+  margin-right: 24px;
 }
 
 .navbar-divider {
   width: 1px;
   height: 32px;
   background: #e0e0e0;
-  margin: 0 24px;
+  margin: 0 24px 0 0;
 }
 
 .navbar-menu {
   display: flex;
-  gap: 32px;
+  gap: 48px;
   align-items: center;
+  flex: 1;
+  justify-content: flex-start;
+  margin-left: 0;
 }
 
-.navbar-menu a {
+.navbar-menu a,
+.navbar-menu .dropdown > a {
   text-decoration: none;
   color: #393939;
-  font-size: 18px;
+  font-size: 22px;
+  font-family: 'IBM Plex Sans', Arial, sans-serif;
   font-weight: 400;
-  padding: 0 4px;
+  letter-spacing: 0.01em;
+  padding: 0 8px;
+  background: none;
+  border: none;
+  outline: none;
+  display: flex;
+  align-items: center;
+  height: 64px;
+  transition: color 0.2s, background 0.2s;
+}
+
+.navbar-menu a:hover,
+.navbar-menu .dropdown > a:hover {
+  color: #0f62fe;
+  background: #f4f4f4;      /* IBM light gray shade */
+  border-radius: 0;         /* IBM style: no rounding */
+  box-shadow: none;         /* Remove shadow */
+  z-index: 2;
+  position: relative;
+  transition: background 0.2s, color 0.2s;
+}
+
+.dropdown {
+  position: relative;
+}
+
+.dropdown > a span {
+  font-size: 20px;
+  margin-left: 6px;
+  margin-bottom: 2px;
+  color: #393939;
+  transition: transform 0.2s;
+  display: inline-block;
+}
+
+.dropdown.open > a span {
+  transform: rotate(180deg);
+}
+
+/* Remove underline and background on focus */
+.navbar-menu a:focus {
+  outline: none;
+  background: none;
 }
 
 .dropdown a {
@@ -76,13 +131,18 @@ body {
 
 .navbar-icons {
   display: flex;
-  gap: 24px;
+  gap: 32px;
+  align-items: center;
+  min-width: 180px; /* Ensures icons are grouped and spaced */
+  justify-content: flex-end;
 }
 
 .navbar-icons .icon {
   font-size: 22px;
   color: #393939;
   cursor: pointer;
+  display: flex;
+  align-items: center;
 }
 
 .main-content {
