@@ -2,11 +2,15 @@ body {
   font-family: 'IBM Plex Sans', Arial, sans-serif;
   margin: 0;
   padding: 0;
+  min-height: 100vh; /* Ensure body takes full viewport height */
+  display: flex;
+  flex-direction: column;
 }
 
 .app {
   display: flex;
   flex-direction: column;
+  min-height: 100vh; /* Ensure app takes full height */
 }
 
 .navbar {
@@ -40,7 +44,7 @@ body {
   display: flex;
   gap: 16px;
   align-items: center;
-  margin-left: 0; 
+  margin-left: 0;
 }
 
 .navbar-menu a {
@@ -52,7 +56,6 @@ body {
   white-space: nowrap;
   position: relative;
 }
-
 
 .dropdown a {
   display: flex;
@@ -71,10 +74,7 @@ body {
   height: 12px;
 }
 
-
 /* Dropdown styles */
-
-
 .dropdown.open .dropdown-content {
   display: block;
 }
@@ -84,32 +84,32 @@ body {
   position: absolute;
   top: 100%;
   left: 0;
-  min-width: 900px;         
-  min-height: 260px;        
+  min-width: 900px;
+  min-height: 260px;
   background-color: #fff;
-  border: none;             
+  border: none;
   border-radius: 0;
   box-shadow: 0 4px 16px rgba(0, 0, 0, 0.10);
-  padding: 48px 64px 48px 64px; 
+  padding: 48px 64px 48px 64px;
   margin-top: 8px;
   z-index: 1000;
   animation: dropdown-fade-in 0.18s ease;
   display: grid;
-  grid-template-columns: repeat(3, 1fr); 
-  grid-template-rows: repeat(2, 1fr);    
-  gap: 40px 80px;                        
+  grid-template-columns: repeat(3, 1fr);
+  grid-template-rows: repeat(2, 1fr);
+  gap: 40px 80px;
   align-items: start;
 }
 
 @keyframes dropdown-fade-in {
-  from { opacity: 0; transform: translateY(-8px);}
-  to { opacity: 1; transform: translateY(0);}
+  from { opacity: 0; transform: translateY(-8px); }
+  to { opacity: 1; transform: translateY(0); }
 }
 
 .dropdown-content a {
   display: flex;
   align-items: center;
-  font-size: 1.5rem;        
+  font-size: 1.5rem;
   font-weight: 400;
   color: #161616;
   text-decoration: none;
@@ -140,7 +140,6 @@ body {
   border-radius: 0;
 }
 
-
 .dropdown-content a svg {
   display: none !important;
 }
@@ -148,7 +147,7 @@ body {
 .navbar-icons {
   display: flex;
   gap: 16px;
-  margin-left: auto; 
+  margin-left: auto;
 }
 
 .navbar-icons .icon {
@@ -157,7 +156,7 @@ body {
   display: flex;
   align-items: center;
   justify-content: center;
-  border-radius: 4px; 
+  border-radius: 4px;
   transition: background 0.15s;
   cursor: pointer;
 }
@@ -167,23 +166,14 @@ body {
   height: 18px;
 }
 
-
 .navbar-icons .icon:hover {
-  background-color: #eeeeee; /* Blackish background on hover */
-  height: 52px; /* Match navbar height */
-  display: flex;
-  /* align-items: center; */
+  background-color: #eeeeee;
 }
 
 .navbar-menu a:hover,
 .dropdown a:hover {
-  background-color: #eeeeee; /* Blackish background on hover */
-  height: 52px; /* navbar height */
-  display: flex;
-  align-items: center;
-
+  background-color: #eeeeee;
 }
-
 
 .search-bar {
   flex: 1;
@@ -219,9 +209,96 @@ body {
   background: #0f62fe;
 }
 
+.main-container {
+  display: flex;
+  padding: 40px 20px;
+  max-width: 1200px;
+  margin: 0 auto;
+  flex: 1; /* Allow main content to grow and push footer down */
+}
+
 .main-content {
+  flex: 3;
+  padding-right: 40px;
+}
+
+.main-content h1 {
+  color: #0f62fe;
+  font-size: 2.5rem;
+  margin-bottom: 16px;
+}
+
+.main-content p {
+  color: #393939;
+  font-size: 1rem;
+  line-height: 1.5;
+  margin-bottom: 24px;
+}
+
+.buttons button {
+  padding: 10px 20px;
+  margin-right: 16px;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  font-size: 1rem;
+  font-family: 'IBM Plex Sans', Arial, sans-serif;
+}
+
+.buttons button:first-child {
+  background-color: #0f62fe;
+  color: #ffffff;
+}
+
+.buttons button:last-child {
+  background-color: #ffffff;
+  color: #0f62fe;
+  border: 1px solid #0f62fe;
+}
+
+.image-placeholder {
+  width: 100%;
+  height: 300px;
+  background-color: #e0e0e0;
+  margin-top: 24px;
+}
+
+.sidebar {
+  flex: 1;
+  padding-left: 40px;
+  border-left: 1px solid #e0e0e0;
+}
+
+.sidebar h3 {
+  color: #393939;
+  font-size: 1.2rem;
+  margin-bottom: 16px;
+}
+
+.sidebar p {
+  color: #393939;
+  font-size: 0.9rem;
+  margin-bottom: 16px;
+}
+
+.sidebar a {
+  color: #0f62fe;
+  text-decoration: none;
+}
+
+.sidebar a:hover {
+  text-decoration: underline;
+}
+
+.content-spacer {
+  flex-grow: 1; /* Pushes footer to bottom */
+}
+
+footer {
+  background-color: #f4f4f4;
   padding: 20px;
   text-align: center;
+  border-top: 1px solid #e0e0e0;
 }
 
 /* Disable menu interaction when search is open */
