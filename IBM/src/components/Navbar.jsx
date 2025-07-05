@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useRef, useEffect } from 'react';
 import '../index.css';
 import ibmLogo from '../assets/IBM.png';
 import searchIcon from '../assets/Search-Icon.png';
@@ -8,14 +8,33 @@ import UserIcon from '../assets/User-Icon.png';
 
 const Navbar = () => {
   const [openDropdown, setOpenDropdown] = useState(null);
+  const [showSearchBar, setShowSearchBar] = useState(false);
+  const navbarRef = useRef(null);
 
   const toggleDropdown = (dropdown) => {
     setOpenDropdown(openDropdown === dropdown ? null : dropdown);
   };
 
-const [showSearchBar, setShowSearchBar] = useState(false);
-return (
-    <nav className="navbar" style={{ position: 'relative' }}>
+  // Close dropdown when clicking outside
+  useEffect(() => {
+    const handleClickOutside = (event) => {
+      if (
+        navbarRef.current &&
+        !navbarRef.current.contains(event.target)
+      ) {
+        setOpenDropdown(null);
+      }
+    };
+    if (openDropdown) {
+      document.addEventListener('mousedown', handleClickOutside);
+    }
+    return () => {
+      document.removeEventListener('mousedown', handleClickOutside);
+    };
+  }, [openDropdown]);
+
+  return (
+    <nav className="navbar" style={{ position: 'relative' }} ref={navbarRef}>
         <div className="navbar-brand">
             <img
                 src={ibmLogo}
@@ -31,87 +50,90 @@ return (
                 <a href="#" onClick={() => toggleDropdown('AI')}>
                     AI
                     <span>
-                        
                         <svg width="20" height="20" viewBox="0 0 20 20" fill="none">
                             <path d="M5 8l5 5 5-5" stroke="#393939" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"/>
                         </svg>
                     </span>
                 </a>
-
-                <div className="dropdown-content">
-                    <a href="#">Overview</a>
-                    <a href="#">Consulting</a>
-                    <a href="#">Research</a>
-                    <a href="#">watsonx</a>
-                    <a href="#">Agents</a>
-                    <a href="#">Ethics and governance</a>    
-                    <a href="#">Granite models</a>
-                </div>
+                {openDropdown === 'AI' && (
+                    <div className="dropdown-content">
+                        <a href="#">Overview</a>
+                        <a href="#">Consulting</a>
+                        <a href="#">Research</a>
+                        <a href="#">watsonx</a>
+                        <a href="#">Agents</a>
+                        <a href="#">Ethics and governance</a>    
+                        <a href="#">Granite models</a>
+                    </div>
+                )}
             </div>
             {/* Hybrid Cloud */}
             <div className={`dropdown ${openDropdown === 'Hybrid Cloud' ? 'open' : ''}`}>
                 <a href="#" onClick={() => toggleDropdown('Hybrid Cloud')}>
                     Hybrid Cloud
                     <span>
-                        {/* Chevron Down SVG */}
                         <svg width="20" height="20" viewBox="0 0 20 20" fill="none">
                             <path d="M5 8l5 5 5-5" stroke="#393939" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"/>
                         </svg>
                     </span>
                 </a>
-                <div className="dropdown-content">
-                    <a href="#">Overview</a>
-                    <a href="#">Consulting</a>
-                    <a href="#">IT infrastructure</a>
-                    <a href="#">Cloud platform</a>
-                    <a href="#">Quantum computing</a>
-                    <a href="#">Research</a>    
-                </div>
+                {openDropdown === 'Hybrid Cloud' && (
+                    <div className="dropdown-content">
+                        <a href="#">Overview</a>
+                        <a href="#">Consulting</a>
+                        <a href="#">IT infrastructure</a>
+                        <a href="#">Cloud platform</a>
+                        <a href="#">Quantum computing</a>
+                        <a href="#">Research</a>    
+                    </div>
+                )}
             </div>
             <div className={`dropdown ${openDropdown === 'Products' ? 'open' : ''}`}>
                 <a href="#" onClick={() => toggleDropdown('Products')}>
                     Products
                     <span>
-                        {/* Chevron Down SVG */}
                         <svg width="20" height="20" viewBox="0 0 20 20" fill="none">
                             <path d="M5 8l5 5 5-5" stroke="#393939" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"/>
                         </svg>
                     </span>
                 </a>
-                <div className="dropdown-content">
-                    <a href="#">Featured</a>
-                    <a href="#">Feature AI & Machine Learning</a>
-                    <a href="#">Analytics</a>
-                    <a href="#">Asset lifecycle management</a>
-                    <a href="#">Business automation</a>
-                    <a href="#">Containers</a>
-                    <a href="#">Databases</a>
-                    <a href="#">DevOps & Engineering IT automation</a>
-                    <a href="#">Middleware</a>
-                    <a href="#">Network Operating systems</a>
-                    <a href="#">Quantum Security & identity Servers Storage</a>
-                </div>
+                {openDropdown === 'Products' && (
+                    <div className="dropdown-content">
+                        <a href="#">Featured</a>
+                        <a href="#">Feature AI & Machine Learning</a>
+                        <a href="#">Analytics</a>
+                        <a href="#">Asset lifecycle management</a>
+                        <a href="#">Business automation</a>
+                        <a href="#">Containers</a>
+                        <a href="#">Databases</a>
+                        <a href="#">DevOps & Engineering IT automation</a>
+                        <a href="#">Middleware</a>
+                        <a href="#">Network Operating systems</a>
+                        <a href="#">Quantum Security & identity Servers Storage</a>
+                    </div>
+                )}
             </div>
             <a href="#">Consulting</a>
             <div className={`dropdown ${openDropdown === 'Support' ? 'open' : ''}`}>
                 <a href="#" onClick={() => toggleDropdown('Support')}>
                     Support
                     <span>
-                        {/* Chevron Down SVG */}
                         <svg width="20" height="20" viewBox="0 0 20 20" fill="none">
                             <path d="M5 8l5 5 5-5" stroke="#393939" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"/>
                         </svg>
                     </span>
                 </a>
-                <div className="dropdown-content">
-                    <a href="#">Whats New</a>
-                    <a href="#">Community</a>
-                    <a href="#">Documentation</a>
-                    <a href="#">Developer</a>
-                    <a href="#">Support</a>
-                    <a href="#">Implementation</a>
-                    <a href="#">Training</a>
-                </div>
+                {openDropdown === 'Support' && (
+                    <div className="dropdown-content">
+                        <a href="#">Whats New</a>
+                        <a href="#">Community</a>
+                        <a href="#">Documentation</a>
+                        <a href="#">Developer</a>
+                        <a href="#">Support</a>
+                        <a href="#">Implementation</a>
+                        <a href="#">Training</a>
+                    </div>
+                )}
             </div>
             <a href="#">Think</a>
         </div>
@@ -209,7 +231,7 @@ return (
             </div>
         )}
     </nav>
-);
+  );
 };
 
 export default Navbar;
